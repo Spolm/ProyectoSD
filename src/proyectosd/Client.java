@@ -30,8 +30,8 @@ public class Client {
     public String sendMessage(String msg) throws IOException {
         
         out.println(msg);
-        String resp = in.readLine();
-        return resp;
+        String res = in.readLine();
+        return res;
     }
  
     public void stopConnection() throws IOException {
