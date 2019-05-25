@@ -5,6 +5,8 @@
  */
 package proyectosd;
 
+import java.io.IOException;
+
 /**
  *
  * @author Spoon
@@ -15,7 +17,15 @@ public class ProyectoSD {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        if(args[0].startsWith("server")) {
+            try {
+                Server server = new Server();
+                server.start(new Integer(args[1]), args[2]);
+            } catch (IOException ex) {
+                System.out.println("Server error");
+            }
+        }
     }
     
 }
