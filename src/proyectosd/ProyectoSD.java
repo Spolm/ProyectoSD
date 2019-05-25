@@ -6,6 +6,8 @@
 package proyectosd;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,6 +27,21 @@ public class ProyectoSD {
             } catch (IOException ex) {
                 System.out.println("Server error");
             }
+        } else {
+            try {
+                Client message = new Client();
+                message.startConnection(args[1], new Integer(args[2]));
+                
+                String response = message.sendMessage(args[3]);
+                
+                System.out.println("Respuesta server: " + response);
+                
+            } catch (IOException ex) {
+                System.out.println("error client message");
+            }
+            
+            
+        
         }
     }
     
