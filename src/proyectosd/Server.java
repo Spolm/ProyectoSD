@@ -6,6 +6,9 @@
 package proyectosd;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -58,19 +61,18 @@ public class Server {
 
                     Client sendmessage = new Client();
                     sendmessage.startConnection(value.substring(5), new Integer(value.substring(0, 4)));
-                    //sendmessage.sendMessage("actualizalista" + this.serializarLista());
+                    sendmessage.sendMessage("actualizalista" + this.serializarLista());
                     
                 }
 
             }
 
             out.println("agregadaTienda");
-
-        } 
-             else if (greeting.startsWith("actualizalista")) {
+            //guardarEstado("Tiendas");
+        } else if (greeting.startsWith("actualizalista")) {
             
             String lista = greeting.substring("actualizalista".length());
-
+            //guardarEstado("Tiendas");
             String[] listatmp = lista.split(",");
             this.store = new HashMap<String, String>();
             for (String tmp : listatmp) {
@@ -88,22 +90,67 @@ public class Server {
         out.close();
         clientSocket.close();
         serverSocket.close();
-        
+        guardarEstado(this.name);
         this.start(port, name);
 
     }
     
     private String serializarLista() {
 
-        String finallista = "";
+        String finalLista = "";
 
         for (Map.Entry<String, String> entry : store.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            finallista += key + "#" + value + ",";
+            finalLista += key + "#" + value + ",";
         }
 
-        return finallista;
+        return finalLista;
     }
     
+    public void guardarEstado(String nombreArchivo){
+        File f;
+        f = new File(nombreArchivo + ".txt");
+        
+        try{
+            FileWriter w = new FileWriter(f);
+            PrintWriter pw = new PrintWriter(w);
+            pw.println(serializarLista());
+            pw.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public boolean leerEstado(String nombreArchivo){
+        try{
+            File file = new File(nombreArchivo +".txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+            int i = 0;
+            while ((st = br.readLine()) != null){
+                System.out.println(st);
+                if(i == 0){
+                    String[] listatmp = st.split(",");
+                    this.store = new HashMap<String, String>();
+                for (String tmp : listatmp) {
+                    String[] finaltmp = tmp.split("#");
+                    this.store.put(finaltmp[0], finaltmp[1]);
+                }    
+            }
+            i++;
+        }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return true;
+    }
+    
+    public void stop() throws IOException {
+        in.close();
+        out.close();
+        clientSocket.close();
+        serverSocket.close();
+    }
 }
