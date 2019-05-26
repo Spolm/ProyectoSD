@@ -36,6 +36,11 @@ public class ProyectoSD {
                 
                 String response = message.sendMessage(args[3]);
                 
+                System.out.print("Soy:");
+                
+//                message.lecturaInventario(args[3]);
+                message.lecturaInventarioPorTienda(args[3]);
+                
                 System.out.println("Respuesta server: " + response);
                 
             } catch (IOException ex) {
