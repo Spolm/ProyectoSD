@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectosd;
+package server;
 
+import client.Client;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -52,7 +53,7 @@ public class Server {
             // agregar tienda
             this.store.put(tienda, puerto + ":" + ip);
 
-            // paseo por cada uno de los elementos de los participantes para enviar la lista
+            // paseo por cada uno de los elementos de las tiendas para enviar la lista
             for (Map.Entry<String, String> entry : store.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue();
@@ -90,7 +91,7 @@ public class Server {
         out.close();
         clientSocket.close();
         serverSocket.close();
-        guardarEstado(this.name);
+        Server.this.guardarEstado(this.name);
         this.start(port, name);
 
     }

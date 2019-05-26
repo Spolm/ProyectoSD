@@ -5,6 +5,8 @@
  */
 package proyectosd;
 
+import server.Server;
+import client.Client;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

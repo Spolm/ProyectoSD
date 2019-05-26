@@ -5,6 +5,7 @@
  */
 package proyectosd;
 
+import client.Client;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
