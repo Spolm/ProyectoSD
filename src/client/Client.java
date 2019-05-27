@@ -49,63 +49,63 @@ public class Client {
         clientSocket.close();
     }
     
-    
-    public void lecturaInventario(String nameF) throws FileNotFoundException, IOException {
-        System.out.println(nameF);
-        String dato = nameF;
-        nameF = dato.substring(9, 13);
-        int contador = 3;
-        String iniciales = nameF.substring(0,3);
+//    
+//    public void lecturaInventario(String nameF) throws FileNotFoundException, IOException {
+//        System.out.println(nameF);
+//        String dato = nameF;
+//        nameF = dato.substring(9, 13);
+//        int contador = 3;
+//        String iniciales = nameF.substring(0,3);
+////        int iden = Integer.parseInt(nameF.substring(3));
+//        int iden = 0;
+//        while (contador != 0){
+//            
+//            String narch = Integer.toString(iden+1);
+//            arch = new File(iniciales+narch+".txt");
+//            pf = new FileReader(arch);
+//            bf = new BufferedReader(pf);
+//            String info;
+//            while ((info = bf.readLine())!=null){
+//                System.out.println(info); 
+//            }
+//            contador--;
+//            iden +=1;
+//            pf.close();
+//        }
+//
+//    }
+//    
+//    
+//        public void lecturaInventarioPorTienda(String nameF) throws FileNotFoundException, IOException {
+//        System.out.println(nameF);
+//        String dato = nameF;
+//        //Se busca en el recurso
+//        nameF = dato.substring(9, 13);
+//        int contador = 3;
+//        String iniciales = nameF.substring(0,3);
 //        int iden = Integer.parseInt(nameF.substring(3));
-        int iden = 0;
-        while (contador != 0){
-            
-            String narch = Integer.toString(iden+1);
-            arch = new File(iniciales+narch+".txt");
-            pf = new FileReader(arch);
-            bf = new BufferedReader(pf);
-            String info;
-            while ((info = bf.readLine())!=null){
-                System.out.println(info); 
-            }
-            contador--;
-            iden +=1;
-            pf.close();
-        }
-
-    }
-    
-    
-        public void lecturaInventarioPorTienda(String nameF) throws FileNotFoundException, IOException {
-        System.out.println(nameF);
-        String dato = nameF;
-        //Se busca en el recurso
-        nameF = dato.substring(9, 13);
-        int contador = 3;
-        String iniciales = nameF.substring(0,3);
-        int iden = Integer.parseInt(nameF.substring(3));
-        while (contador != 0){
-            
-            
-            if(iden == 4){
-                System.out.println("    Revisar:"+iden);
-                iden = 1;
-            }
-            String narch = Integer.toString(iden);
-            arch = new File(iniciales+narch+".txt");
-            pf = new FileReader(arch);
-            bf = new BufferedReader(pf);
-            String info;
-            while ((info = bf.readLine())!=null){
-                System.out.println(info); 
-            }
-            contador--;
-            iden +=1;
-
-            pf.close();
-        }
-
-    }
+//        while (contador != 0){
+//            
+//            
+//            if(iden == 4){
+//                System.out.println("    Revisar:"+iden);
+//                iden = 1;
+//            }
+//            String narch = Integer.toString(iden);
+//            arch = new File(iniciales+narch+".txt");
+//            pf = new FileReader(arch);
+//            bf = new BufferedReader(pf);
+//            String info;
+//            while ((info = bf.readLine())!=null){
+//                System.out.println(info); 
+//            }
+//            contador--;
+//            iden +=1;
+//
+//            pf.close();
+//        }
+//
+//    }
     
     
     public void guardarInventario(String nameF) throws IOException{

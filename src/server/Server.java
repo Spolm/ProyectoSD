@@ -83,6 +83,7 @@ public class Server {
             }
 
         } else if(greeting.startsWith("ListarProductosEmpresa")){
+            //Listar los productos de todas las tiendas.
             System.out.println(name);
             String dato = name;
             name = dato.substring(9, 13);
