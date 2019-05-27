@@ -75,7 +75,9 @@ public class Server {
             int totallength = "addproducto".length();
 
             String codProducto = greeting.substring(totallength, totallength + 3);
+            System.out.println("Codigo:" + codProducto);
             String cantidadProducto = greeting.substring(totallength + 4, totallength + 6);
+            System.out.println("cantidad: " + cantidadProducto);
             String producto = codProducto+"#"+cantidadProducto;
             //this.tengopapa = true;
             actualizarInventario("Inventario"+this.name, producto);

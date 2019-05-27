@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Store {
     
     private String storeName;
-    private ArrayList<Product> prouctList;
+    private ArrayList<Product> productList;
 
     public String getStoreName() {
         return storeName;
@@ -24,12 +24,12 @@ public class Store {
         this.storeName = storeName;
     }
 
-    public ArrayList<Product> getProuctList() {
-        return prouctList;
+    public ArrayList<Product> getProductList() {
+        return productList;
     }
 
-    public void setProuctList(ArrayList<Product> prouctList) {
-        this.prouctList = prouctList;
+    public void setProductList(ArrayList<Product> productList) {
+        this.productList = productList;
     }
 
     public Store() {
@@ -39,9 +39,9 @@ public class Store {
         this.storeName = storeName;
     }
     
-    public Store(String storeName, ArrayList<Product> prouctList) {
+    public Store(String storeName, ArrayList<Product> productList) {
         this.storeName = storeName;
-        this.prouctList = prouctList;
+        this.productList = productList;
     }
     
     
