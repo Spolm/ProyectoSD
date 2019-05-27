@@ -70,20 +70,20 @@ public class Server {
 
             out.println("agregadaTienda");
             //guardarEstado("Tiendas");
-        } else if (greeting.startsWith("addproducto")){
-            
+        } else if (greeting.startsWith("addproducto")) {
+
             int totallength = "addproducto".length();
 
-            String tienda = greeting.substring(totallength, totallength + 4);
-            String puerto = greeting.substring(totallength + 4, totallength + 8);
-            String ip = greeting.substring(totallength + 8);
+            String codProducto = greeting.substring(totallength, totallength + 3);
+            String cantidadProducto = greeting.substring(totallength + 4, totallength + 6);
+            String producto = codProducto+"#"+cantidadProducto;
+            //this.tengopapa = true;
+            actualizarInventario("Inventario"+this.name, producto);
             
-            // agregar tienda
-            this.store.put(tienda, puerto + ":" + ip);
-        
-        }
-        
-        else if (greeting.startsWith("actualizalista")) {
+            System.out.println("Agregado producto: "+ "codprod en la tienda "+ this.name);
+            // agregar participante
+
+        } else if (greeting.startsWith("actualizalista")) {
             
             String lista = greeting.substring("actualizalista".length());
             //guardarEstado("Tiendas");
@@ -130,6 +130,21 @@ public class Server {
             FileWriter w = new FileWriter(f);
             PrintWriter pw = new PrintWriter(w);
             pw.println(serializarLista());
+            pw.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+        public void actualizarInventario(String nombreArchivo, String producto){
+        File f;
+        f = new File(nombreArchivo + ".txt");
+        
+        try{
+            FileWriter w = new FileWriter(f, true);
+            PrintWriter pw = new PrintWriter(w);
+            pw.println(producto);
             pw.close();
         }
         catch(Exception e){
