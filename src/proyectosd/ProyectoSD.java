@@ -41,9 +41,7 @@ public class ProyectoSD {
             } catch (IOException ex) {
                 System.out.println("error client message");
             }
-            
-            
-        
+                  
         }
     }
     

@@ -70,7 +70,20 @@ public class Server {
 
             out.println("agregadaTienda");
             //guardarEstado("Tiendas");
-        } else if (greeting.startsWith("actualizalista")) {
+        } else if (greeting.startsWith("addproducto")){
+            
+            int totallength = "addproducto".length();
+
+            String tienda = greeting.substring(totallength, totallength + 4);
+            String puerto = greeting.substring(totallength + 4, totallength + 8);
+            String ip = greeting.substring(totallength + 8);
+            
+            // agregar tienda
+            this.store.put(tienda, puerto + ":" + ip);
+        
+        }
+        
+        else if (greeting.startsWith("actualizalista")) {
             
             String lista = greeting.substring("actualizalista".length());
             //guardarEstado("Tiendas");
