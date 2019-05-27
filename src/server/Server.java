@@ -33,9 +33,9 @@ public class Server {
     private ArrayList<Product> products;
     private HashMap<String, String> store = new HashMap<>();
     private String name = "";
-    
+    public String storeName;
     public void start(int port, String name) throws IOException {
-
+        
         System.out.println("Im listening ... on " + port + " I'm " + name);
         this.name = name;
 
@@ -88,6 +88,41 @@ public class Server {
             System.out.println("Agregado producto: "+ "codprod en la tienda "+ this.name);
             // agregar participante
 
+        } else if (greeting.startsWith("listarproductosempresa")) {
+            int totallength = "listarproductosempresa".length();
+            storeName = greeting.substring(totallength, totallength + 4);
+            String nombre = storeName.substring(0,3);
+            String index = storeName.substring(nombre.length());
+            int indice = Integer.parseInt(index);
+            int contador = 3;
+            while (contador != 0){
+                index = Integer.toString(indice);
+                File arch = new File("Inventario"+nombre+index+".txt");
+                BufferedReader bf;
+                try (FileReader pf = new FileReader(arch)) {
+                    bf = new BufferedReader(pf);
+                    String info;
+                    while ((info = bf.readLine()) != null) {
+                        System.out.println(info);
+                    }   contador--;
+                    indice++;
+                }
+                bf.close();
+            }
+        } else if (greeting.startsWith("listarproductosportienda")) {
+            int totallength = "listarproductosportienda".length();
+            storeName = greeting.substring(totallength, totallength + 4);
+            //    File arch = new File("Inventario"+storeName+".txt");
+              //  BufferedReader bf;
+            //try (FileReader pf = new FileReader(arch)) {
+              //  bf = new BufferedReader(pf);
+                //String info;
+                //while ((info = bf.readLine()) != null) {
+                  //  System.out.println(info);
+                    out.println("listarproductosportienda");
+                //}
+          //  }
+                //bf.close();
         } else if (greeting.startsWith("actualizalista")) {
             
             String lista = greeting.substring("actualizalista".length());
