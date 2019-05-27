@@ -82,7 +82,60 @@ public class Server {
                 //guardarEstado(tmp);
             }
 
-        } else {
+        } else if(greeting.startsWith("ListarProductosEmpresa")){
+            System.out.println(name);
+            String dato = name;
+            name = dato.substring(9, 13);
+            int contador = 3;
+            String iniciales = name.substring(0,3);
+    //        int iden = Integer.parseInt(nameF.substring(3));
+            int iden = 0;
+            while (contador != 0){
+
+                String narch = Integer.toString(iden+1);
+                File arch = new File(iniciales+narch+".txt");
+                FileReader pf = new FileReader(arch);
+                BufferedReader bf = new BufferedReader(pf);
+                String info;
+                while ((info = bf.readLine())!=null){
+                    System.out.println(info); 
+                }
+                contador--;
+                iden +=1;
+                pf.close();
+            }
+         }
+         else if (greeting.startsWith("ListarProductosEmpresaPorTienda")){
+             //Listar los productos por Tienda
+                System.out.println(name);
+                String dato = name;
+                //Se busca en el recurso
+                name = dato.substring(9, 13);
+                int contador = 3;
+                String iniciales = name.substring(0,3);
+                int iden = Integer.parseInt(name.substring(3));
+                while (contador != 0){
+
+
+                    if(iden == 4){
+                        System.out.println("    Revisar:"+iden);
+                        iden = 1;
+                    }
+                    String narch = Integer.toString(iden);
+                    File arch = new File(iniciales+narch+".txt");
+                    FileReader pf = new FileReader(arch);
+                    BufferedReader bf = new BufferedReader(pf);
+                    String info;
+                    while ((info = bf.readLine())!=null){
+                        System.out.println(info); 
+                    }
+                    contador--;
+                    iden +=1;
+
+                    pf.close();
+                }
+        }
+        else {
             System.out.println("Mensaje no reconocido");
             out.println("Mensaje corrupto");
         }
