@@ -6,6 +6,7 @@
 package server;
 
 import client.Client;
+import common.Product;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -15,6 +16,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +30,7 @@ public class Server {
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
-
+    private ArrayList<Product> products;
     private HashMap<String, String> store = new HashMap<>();
     private String name = "";
     
@@ -80,6 +82,7 @@ public class Server {
             System.out.println("cantidad: " + cantidadProducto);
             String producto = codProducto+"#"+cantidadProducto;
             //this.tengopapa = true;
+            
             actualizarInventario("Inventario"+this.name, producto);
             
             System.out.println("Agregado producto: "+ "codprod en la tienda "+ this.name);
