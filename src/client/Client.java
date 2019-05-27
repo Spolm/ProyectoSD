@@ -53,7 +53,7 @@ public class Client {
     public void lecturaInventario(String nameF) throws FileNotFoundException, IOException {
         System.out.println(nameF);
         String dato = nameF;
-        nameF = dato.substring(15, 19);
+        nameF = dato.substring(9, 13);
         int contador = 3;
         String iniciales = nameF.substring(0,3);
 //        int iden = Integer.parseInt(nameF.substring(3));
@@ -79,7 +79,8 @@ public class Client {
         public void lecturaInventarioPorTienda(String nameF) throws FileNotFoundException, IOException {
         System.out.println(nameF);
         String dato = nameF;
-        nameF = dato.substring(15, 19);
+        //Se busca en el recurso
+        nameF = dato.substring(9, 13);
         int contador = 3;
         String iniciales = nameF.substring(0,3);
         int iden = Integer.parseInt(nameF.substring(3));
