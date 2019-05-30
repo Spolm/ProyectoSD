@@ -112,21 +112,22 @@ public class Server {
         } else if (greeting.startsWith("listarproductosportienda")) {
             int totallength = "listarproductosportienda".length();
             storeName = greeting.substring(totallength, totallength + 4);
-            //    File arch = new File("Inventario"+storeName+".txt");
-              //  BufferedReader bf;
-            //try (FileReader pf = new FileReader(arch)) {
-              //  bf = new BufferedReader(pf);
-                //String info;
-                //while ((info = bf.readLine()) != null) {
-                  //  System.out.println(info);
-                    out.println("listarproductosportienda");
-                //}
-          //  }
-                //bf.close();
-        } else if (greeting.startsWith("actualizalista")) {
+                File arch = new File("Inventario"+storeName+".txt");
+                BufferedReader bf;
+            try (FileReader pf = new FileReader(arch)) {
+                bf = new BufferedReader(pf);
+                String info;
+                ArrayList<String> response = new ArrayList();
+                while ((info = bf.readLine()) != null) {
+                    System.out.println(info);
+                    response.add(info);
+                }
+                    out.println(response);
+            }
+            bf.close();
             
+        } else if (greeting.startsWith("actualizalista")) {
             String lista = greeting.substring("actualizalista".length());
-            //guardarEstado("Tiendas");
             String[] listatmp = lista.split(",");
             this.store = new HashMap<String, String>();
             for (String tmp : listatmp) {

@@ -38,18 +38,6 @@ public class ProyectoSD {
                 message.startConnection(args[1], new Integer(args[2]));
                 
                 String response = message.sendMessage(args[3]);
-                if (response.equals("listarproductosportienda")&& server!=null){
-                    File arch = new File("Inventario"+server.storeName+".txt");
-                BufferedReader bf;
-            try (FileReader pf = new FileReader(arch)) {
-                bf = new BufferedReader(pf);
-                String info;
-                while ((info = bf.readLine()) != null) {
-                    System.out.println(info);
-                }
-            }
-                bf.close();
-                }
                 System.out.println("Respuesta server: " + response);
                 
             } catch (IOException ex) {
